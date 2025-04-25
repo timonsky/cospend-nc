@@ -404,6 +404,9 @@ class LocalProjectService implements IProjectService {
 			)
 			->andWhere(
 				$qb->expr()->eq('deleted', $qb->createNamedParameter(0, IQueryBuilder::PARAM_INT))
+			)
+			->andWhere(
+				$qb->expr()->neq('category_id', $qb->createNamedParameter(-11, IQueryBuilder::PARAM_INT))
 			);
 		$req = $qb->executeQuery();
 		while ($row = $req->fetch()) {
